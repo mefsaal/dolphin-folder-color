@@ -26,7 +26,7 @@ declare colors=(default black brown cyan blue grey green magenta orange red yell
 
 declare symbols=( \
     default      activities  apple     copy-cloud desktop  \
-    development  documents   download  downloads  drive    \
+    development  documents   download  downloads  google-drive    \
     dropbox      favorites   games     git        gnome    \
     image-people important   java      linux      locked   \
     mail         mail-cloud  mega      meocloud   music    \
@@ -62,7 +62,7 @@ showHelp() {
 
 
     -s <symbol>     default      activities  apple     copy-cloud desktop 
-                    development  documents   download  downloads  drive   
+                    development  documents   download  downloads  google-drive   
                     dropbox      favorites   games     git        gnome   
                     image-people important   java      linux      locked  
                     mail         mail-cloud  mega      meocloud   music   
