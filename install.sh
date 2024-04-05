@@ -112,7 +112,7 @@ if $RootInstall ; then
         mk_directory $pathService
         mk_directory $pathExec
 
-        rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE"
+        rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE" "$pathService/$foldercolorSY"
         kdecp --overwrite ./$foldercolorSH "$pathExec/$foldercolorSH"
         kdecp --overwrite ./$tmp           "$pathService/$foldercolorSY"
         kdecp --overwrite ./$tmp           "$pathService/$foldercolorDE"
@@ -140,7 +140,7 @@ else
     setPathSH
     mk_directory $pathService
     
-    rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE"
+    rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE" "$pathService/$foldercolorSY"
     kdecp --overwrite ./$foldercolorSH "$pathService/$foldercolorSH"
     kdecp --overwrite ./$tmp           "$pathService/$foldercolorSY"
     kdecp --overwrite ./$tmp           "$pathService/$foldercolorDE"
