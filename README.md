@@ -1,6 +1,6 @@
 Dolphin Folder Color
 ====================
-version 2.0.1-Mefsaal
+version 3.0.0-Mefsaal
 
 A KDE Service Menu for coloring the folders so fast, also has the ability to color a selected set of folders.
 
@@ -15,3 +15,4 @@ You just need to run the script. **install.sh** with a click and restart dolphin
  [Papirus icon theme](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme)
 ### Custom Icon
  ![Custom Icon](screenshot2.png)
+                                    

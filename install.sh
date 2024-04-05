@@ -33,9 +33,10 @@ declare combobox1=('⚫ Install in:' 'root' $user)
 declare rect='330x130'
 declare prefix='/usr'
 
-declare foldercolorDE='plasma5-folder-color.desktop'
+declare foldercolorDE='plasma-folder-color.desktop'
+declare foldercolorSY='plasma-color-symbolic.desktop'
 declare foldercolorSH='dolphin-folder-color'
-declare kde_config_services=`kf5-config --path services`
+declare kde_config_services=`qtpaths --locate-dirs GenericDataLocation kio/servicemenus`
 declare pathService=''
 declare pathExec='/usr/bin'
 
@@ -44,7 +45,7 @@ setPathSH() {
     pattern='dolphin-folder-color'
     str="$pathExec/$foldercolorSH"
     str=${str//+(\/)/\\/}
-    sed "s/$pattern/$str/" $foldercolorDE > $tmp
+    sed "s/$pattern/$str/" "$foldercolorDE && $foldercolorSY" > $tmp
 }
 
 mk_directory() {
@@ -54,8 +55,10 @@ mk_directory() {
 }
 
 authorize() {
-    if [ `which kdesu` ] ; then
-        kdesu   -i red -n -d -c $0 finish & disown -h
+    if [ `which /usr/lib/kf6/kdesu` ] ; then
+        #kdesu   -i red -n -d -c $0 finish & disown -h
+        "/usr/lib/kf6/kdesu" -i red -n -d -c $0 finish & disown -h
+
     elif [ `which kdesudo` ] ; then
         kdesudo -i red -n -d -c $0 finish & disown -h
     else
@@ -88,6 +91,7 @@ fi
 
 chmod +x ./$foldercolorSH
 chmod +x ./$foldercolorDE
+chmod +x ./$foldercolorSY
 
 succesInstall=true
 if $RootInstall ; then
@@ -108,8 +112,9 @@ if $RootInstall ; then
         mk_directory $pathExec
 
         rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE"
-        kdecp5 --overwrite ./$foldercolorSH "$pathExec/$foldercolorSH"
-        kdecp5 --overwrite ./$tmp           "$pathService/$foldercolorDE"
+        kdecp --overwrite ./$foldercolorSH "$pathExec/$foldercolorSH"
+        kdecp --overwrite ./$tmp           "$pathService/$foldercolorSY"
+        kdecp --overwrite ./$tmp           "$pathService/$foldercolorDE"
 
         if [ $? != 0 ] ; then
             succesInstall=false
@@ -135,8 +140,9 @@ else
     mk_directory $pathService
     
     rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE"
-    kdecp5 --overwrite ./$foldercolorSH "$pathService/$foldercolorSH"
-    kdecp5 --overwrite ./$tmp           "$pathService/$foldercolorDE"
+    kdecp --overwrite ./$foldercolorSH "$pathService/$foldercolorSH"
+    kdecp --overwrite ./$tmp           "$pathService/$foldercolorSY"
+    kdecp --overwrite ./$tmp           "$pathService/$foldercolorDE"
     if [[ $? != 0 ]] ; then
         succesInstall=false
     fi
