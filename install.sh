@@ -45,7 +45,8 @@ setPathSH() {
     pattern='dolphin-folder-color'
     str="$pathExec/$foldercolorSH"
     str=${str//+(\/)/\\/}
-    sed "s/$pattern/$str/" "$foldercolorDE && $foldercolorSY" > $tmp
+    sed "s/$pattern/$str/" "$foldercolorDE" > $tmp
+    sed "s/$pattern/$str/" "$foldercolorSY" > $tmp
 }
 
 mk_directory() {
