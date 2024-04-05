@@ -1,0 +1,156 @@
+[Desktop Entry]
+Name=Symbolic Color
+
+Encoding=UTF-8
+Version=2.0
+#Icon=folder-desktop
+Type=Service
+MimeType=inode/directory;
+
+X-KDE-Submenu=Symbolic Color
+X-KDE-Submenu[es]=Color de Simbolos 
+X-KDE-Submenu[fr]=Symbolic Color
+X-KDE-Submenu[it]=Symbolic Color
+X-KDE-Submenu[pt]=Symbolic Color
+X-KDE-Submenu[pt_BR]=Symbolic Color
+X-KDE-Submenu[de]=Symbolic Color
+X-KDE-Submenu[pl]=Symbolic Color
+X-KDE-Submenu[ru]=Symbolic Color
+
+Actions=home;desktop;documents;downloads;music;pictures;public;templates;videos;default;
+
+#########################################################################################################
+
+[Desktop Action home]
+Name=Home
+Name[es]=Carpeta Personal
+Name[fr]=Home
+Name[it]=Home
+Name[pt]=Home
+Name[pt_BR]=Home
+Name[de]=Home
+Name[pl]=Home
+Name[ru]=Home
+Icon=folder-home
+Exec=dolphin-folder-color -s home %U
+
+[Desktop Action desktop]
+Name=Desktop
+Name[es]=Escritorio
+Name[fr]=Desktop
+Name[it]=Desktop
+Name[pt]=Desktop
+Name[pt_BR]=Desktop
+Name[de]=Desktop
+Name[pl]=Desktop
+Name[ru]=Desktop
+Icon=folder-desktop                                                                 
+Exec=dolphin-folder-color -s desktop %U
+
+[Desktop Action documents]
+Name=Documents
+Name[es]=Documentos
+Name[fr]=Documents
+Name[it]=Documentazione
+Name[pt]=Documentos
+Name[pt_BR]=Documentos
+Name[de]=Unterlagen
+Name[pl]=Dokumenty
+Name[ru]=Документы
+Icon=folder-documents
+Exec=dolphin-folder-color -s documents %U
+
+[Desktop Action downloads]
+Name=Downloads
+Name[es]=Descargas
+Name[fr]=Téléchargements
+Name[it]=Download
+Name[pt]=Download
+Name[pt_BR]=Downloads
+Name[de]=Downloads
+Name[pl]=Pobrane
+Name[ru]=Загрузки
+Icon=folder-downloads
+Exec=dolphin-folder-color -s downloads %U
+
+[Desktop Action music]
+Name=Sound
+Name[es]=Sonido
+Name[fr]=Son
+Name[it]=Suono
+Name[pt]=Parecer
+Name[pt_BR]=Áudio
+Name[de]=Klingen
+Name[pl]=Muzyka
+Name[ru]=Музыка
+Icon=folder-music
+Exec=dolphin-folder-color -s music %U   
+
+[Desktop Action pictures]
+Name=Image
+Name[es]=Imágenes
+Name[fr]=Image
+Name[it]=Immagine
+Name[pt]=Imagem
+Name[pt_BR]=Imagens
+Name[de]=Bild
+Name[pl]=Obrazy
+Name[ru]=Изображения
+Icon=folder-images
+Exec=dolphin-folder-color -s pictures %U
+
+[Desktop Action public]
+Name=Public
+Name[es]=Público
+Name[fr]=Public
+Name[it]=Public
+Name[pt]=Public
+Name[pt_BR]=Public
+Name[de]=Public
+Name[pl]=Public
+Name[ru]=Public
+Icon=folder-public
+Exec=dolphin-folder-color -s public %U
+
+[Desktop Action templates]
+Name=Templates
+Name[es]=Plantillas
+Name[fr]=Templates
+Name[it]=Templates
+Name[pt]=Templates
+Name[pt_BR]=Templates
+Name[de]=Templates
+Name[pl]=Templates
+Name[ru]=Templates
+Icon=folder-templates
+Exec=dolphin-folder-color -s templates %U
+
+[Desktop Action videos]
+Name=Video
+Name[es]=Video
+Name[fr]=Vidéo
+Name[it]=Video
+Name[pt]=Vídeo
+Name[pt_BR]=Vídeo
+Name[de]=Video
+Name[pl]=Wideo
+Name[ru]=Видео
+Icon=folder-videos
+Exec=dolphin-folder-color -s videos %U  
+
+#########################################################################################################
+
+[Desktop Action default]
+Name=Default
+Name[es]=Predeterminado
+Name[fr]=Défaut
+Name[it]=Difetto
+Name[pt]=Omissão
+Name[pt_BR]=Padrão
+Name[de]=Default
+Name[pl]=Domyślny
+Name[ru]=По умолчанию
+Icon=folder-folder
+Exec=dolphin-folder-color -c default -s default %U
+
+#########################################################################################################
