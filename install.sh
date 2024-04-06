@@ -1,141 +1,45 @@
 #!/bin/bash
 
-# Copyright (C) 2014  Smith AR <audoban@openmailbox.org>
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-#
-# INSTALL: Only run this script
+foldercolorDE='plasma-folder-color.desktop'
+foldercolorSY='plasma-color-symbolic.desktop'
+foldercolorSH='dolphin-folder-color'
+ROOT_UID=0 
+DEST_DIR=''
+EXEC_DIR=''
 
-shopt -s extglob
-shopt -s expand_aliases
-shopt -s extdebug
+    if [ "$UID" -eq "$ROOT_UID" ]; then
 
-cd $(dirname $0)
+        DEST_DIR="/usr/share/kio/servicemenus"
+        EXEC_DIR="/usr/bin/"
+        
+        rm "$EXEC_DIR/$foldercolorSH" "$DEST_DIR/$foldercolorDE" "$DEST_DIR/$foldercolorSY"
+        
+        mkdir -p    ${DEST_DIR}
+        
+        cp -f ./$foldercolorSH                      "$EXEC_DIR/$foldercolorSH"
+        cp -f ./$foldercolorSY                      "$DEST_DIR/$foldercolorSY"
+        cp -f ./$foldercolorDE                      "$DEST_DIR/$foldercolorDE"
+        
+        chmod +x "$EXEC_DIR/$foldercolorSH"
+        chmod +x "$DEST_DIR/$foldercolorSY"
+        chmod +x "$DEST_DIR/$foldercolorDE"
 
-${exit:=$1}
-exit=${exit:-"continue"}
-
-declare title='Folder Color'
-declare user=$(basename $HOME)
-declare combobox1=('⚫ Install in:' $user $user)
-declare rect='330x130'
-declare prefix='/usr'
-
-declare foldercolorDE='plasma-folder-color.desktop'
-declare foldercolorSY='plasma-color-symbolic.desktop'
-declare foldercolorSH='dolphin-folder-color'
-declare kde_config_services=`qtpaths --locate-dirs GenericDataLocation kio/servicemenus`
-declare pathService=''
-declare pathExec='/usr/bin'
-
-
-mk_directory() {
-    if ! [ -e $1 ] ; then
-        mkdir "$1"
-    fi
-}
-
-if [ $exit != "finish" ] && [ $UID != 0 ] ; then
-    kdg=$(kdialog \
-        --title "$title" \
-        --combobox "${combobox1[@]}" \
-        --default $user \
-        --geometry $rect)
-
-    if [ -z "$kdg" ]
-        then exit 0
-    elif [[ "$kdg" = "$user" ]]
-        then prefix=$HOME
-    fi
-fi
-
-
-if [[ $prefix = '/usr' ]] ; then
-    declare -r RootInstall=true
-else
-    declare -r RootInstall=false
-fi
-
-succesInstall=true
-if $RootInstall ; then
-    if [[ $UID != 0 ]] ; then
-        exit
-    else
-        IFS=":"
-
-        for p in $kde_config_services ; do
-            if [ -z ${p/\/usr\/*/} ] ; then
-                pathService="$p"
-            fi
-        done
-
-        mk_directory $pathService
-        mk_directory $pathExec
-
-        rm "$pathExec/$foldercolorSH" "$pathService/$foldercolorDE" "$pathService/$foldercolorSY"
-
-        cp -f ./$foldercolorSH                      "$pathExec/$foldercolorSH"
-        cp -f ./$foldercolorSY                      "$pathService/$foldercolorSY"
-        cp -f ./$foldercolorDE                      "$pathService/$foldercolorDE"
-
-        chmod +x "$pathExec/$foldercolorSH"
-        chmod +x "$pathService/$foldercolorSY"
-        chmod +x "$pathService/$foldercolorDE"
-
-        if [ $? != 0 ] ; then
-            succesInstall=false
-        fi
-
-    fi
-else
-    IFS=":"
-
-    for p in $kde_config_services ; do
-        if ! [ -d "$p" ]
-            then mkdir "$p"
-        fi
-        if [ -w "$p" ] ; then
-            pathService="$p"
-            pathExec="$pathService"
-            break
-        fi
-    done
-
-    setPathSH
-    mk_directory $pathService
+        echo 'INSTALLED IN $ROOT DIRECTORY'
     
-    rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE" "$pathService/$foldercolorSY"
-
-    cp -f ./$foldercolorSH                 "$pathService/$foldercolorSH"
-    cp -f ./$foldercolorSY                 "$pathService/$foldercolorSY"
-    cp -f ./$foldercolorDE                 "$pathService/$foldercolorDE"
-
-    chmod +x "$pathService/$foldercolorSH"
-    chmod +x "$pathService/$foldercolorSY"
-    chmod +x "$pathService/$foldercolorDE"
-
-    if [[ $? != 0 ]] ; then
-        succesInstall=false
-    fi
-    rm $tmp
-fi
-
-if $succesInstall ; then
-    msg="Installed successfully
-    \nPlease restart Dolphin to update the Service Menus"
-else
-    msg="Installation failed!"
-fi
-kdialog --title "$title" --msgbox "$msg" --geometry $rect
+    else
+        DEST_DIR="$HOME/.local/share/kio/servicemenus"
+        
+        rm "$DEST_DIR/$foldercolorSH" "$DEST_DIR/$foldercolorDE" "$DEST_DIR/$foldercolorSY"
+        
+        mkdir -p    ${DEST_DIR}
+        
+        cp -f ./$foldercolorSH                      "$DEST_DIR/$foldercolorSH"
+        cp -f ./$foldercolorSY                      "$DEST_DIR/$foldercolorSY"
+        cp -f ./$foldercolorDE                      "$DEST_DIR/$foldercolorDE"
+        
+        chmod +x "$DEST_DIR/$foldercolorSH"
+        chmod +x "$DEST_DIR/$foldercolorSY"
+        chmod +x "$DEST_DIR/$foldercolorDE"
+        
+        echo 'INSTALLED IN $USER DIRECTORY'
+   fi
