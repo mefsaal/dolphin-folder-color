@@ -29,7 +29,7 @@ exit=${exit:-"continue"}
 
 declare title='Folder Color'
 declare user=$(basename $HOME)
-declare combobox1=('⚫ Install in:' 'root' $user)
+declare combobox1=('⚫ Install in:' $user $user)
 declare rect='330x130'
 declare prefix='/usr'
 
@@ -40,34 +40,12 @@ declare kde_config_services=`qtpaths --locate-dirs GenericDataLocation kio/servi
 declare pathService=''
 declare pathExec='/usr/bin'
 
-setPathSH() {
-    export tmp='.tmp'
-    pattern='dolphin-folder-color'
-    str="$pathExec/$foldercolorSH"
-    str=${str//+(\/)/\\/}
-    sed "s/$pattern/$str/" "$foldercolorDE" > $tmp
-    sed "s/$pattern/$str/" "$foldercolorSY" > $tmp
-}
 
 mk_directory() {
     if ! [ -e $1 ] ; then
         mkdir "$1"
     fi
 }
-
-authorize() {
-    if [ `which /usr/lib/kf6/kdesu` ] ; then
-        #kdesu   -i red -n -d -c $0 finish & disown -h
-        "/usr/lib/kf6/kdesu" -i red -n -d -c $0 finish & disown -h
-
-    elif [ `which kdesudo` ] ; then
-        kdesudo -i red -n -d -c $0 finish & disown -h
-    else
-        kdialog --title dolphin-folder-color --error 'kdesu not found'
-        exit 1
-    fi
-}
-
 
 if [ $exit != "finish" ] && [ $UID != 0 ] ; then
     kdg=$(kdialog \
@@ -90,14 +68,9 @@ else
     declare -r RootInstall=false
 fi
 
-chmod +x ./$foldercolorSH
-chmod +x ./$foldercolorDE
-chmod +x ./$foldercolorSY
-
 succesInstall=true
 if $RootInstall ; then
     if [[ $UID != 0 ]] ; then
-        authorize
         exit
     else
         IFS=":"
@@ -108,20 +81,23 @@ if $RootInstall ; then
             fi
         done
 
-        setPathSH
         mk_directory $pathService
         mk_directory $pathExec
 
-        rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE" "$pathService/$foldercolorSY"
-        kdecp --overwrite ./$foldercolorSH "$pathExec/$foldercolorSH"
-        kdecp --overwrite ./$tmp           "$pathService/$foldercolorSY"
-        kdecp --overwrite ./$tmp           "$pathService/$foldercolorDE"
+        rm "$pathExec/$foldercolorSH" "$pathService/$foldercolorDE" "$pathService/$foldercolorSY"
+
+        cp -f ./$foldercolorSH                      "$pathExec/$foldercolorSH"
+        cp -f ./$foldercolorSY                      "$pathService/$foldercolorSY"
+        cp -f ./$foldercolorDE                      "$pathService/$foldercolorDE"
+
+        chmod +x "$pathExec/$foldercolorSH"
+        chmod +x "$pathService/$foldercolorSY"
+        chmod +x "$pathService/$foldercolorDE"
 
         if [ $? != 0 ] ; then
             succesInstall=false
         fi
 
-        rm -r $tmp
     fi
 else
     IFS=":"
@@ -141,9 +117,15 @@ else
     mk_directory $pathService
     
     rm "$pathService/$foldercolorSH" "$pathService/$foldercolorDE" "$pathService/$foldercolorSY"
-    kdecp --overwrite ./$foldercolorSH "$pathService/$foldercolorSH"
-    kdecp --overwrite ./$tmp           "$pathService/$foldercolorSY"
-    kdecp --overwrite ./$tmp           "$pathService/$foldercolorDE"
+
+    cp -f ./$foldercolorSH                 "$pathService/$foldercolorSH"
+    cp -f ./$foldercolorSY                 "$pathService/$foldercolorSY"
+    cp -f ./$foldercolorDE                 "$pathService/$foldercolorDE"
+
+    chmod +x "$pathService/$foldercolorSH"
+    chmod +x "$pathService/$foldercolorSY"
+    chmod +x "$pathService/$foldercolorDE"
+
     if [[ $? != 0 ]] ; then
         succesInstall=false
     fi

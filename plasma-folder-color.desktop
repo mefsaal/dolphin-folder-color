@@ -3,7 +3,7 @@ Name=Folder Color
 
 Encoding=UTF-8
 Version=2.0
-#Icon=folder-folder
+Icon=folder-folder
 Type=Service
 MimeType=inode/directory;
 

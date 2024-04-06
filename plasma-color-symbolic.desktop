@@ -3,7 +3,7 @@ Name=Symbolic Color
 
 Encoding=UTF-8
 Version=2.0
-#Icon=folder-desktop
+Icon=folder-desktop
 Type=Service
 MimeType=inode/directory;
 
