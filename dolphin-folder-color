@@ -36,8 +36,8 @@ declare color='none'
 declare symbol='none'
 
 
-if which kiconfinder5 &>/dev/null ; then
-    alias kiconfinder="kiconfinder5"
+if which kiconfinder6 &>/dev/null ; then
+    alias kiconfinder="kiconfinder6"
 fi
 
 
