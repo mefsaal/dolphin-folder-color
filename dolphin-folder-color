@@ -95,8 +95,7 @@ setCustomIcon() {
 
 openChooser() {
     custom=true
-    icon=$(kdialog --title 'Select a icon' \
-           --geticon Desktop Place 2> /dev/null)
+    icon=$(kdialog --title 'Select a icon' --geticon 'Place' 2> /dev/null)
 
     if [[ ${#icon} = 0 ]] ; then
         exit
