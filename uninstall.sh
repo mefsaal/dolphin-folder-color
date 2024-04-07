@@ -4,22 +4,24 @@ foldercolorDE='plasma-folder-color.desktop'
 foldercolorSY='plasma-color-symbolic.desktop'
 foldercolorSH='dolphin-folder-color'
 ROOT_UID=0 
-DEST_DIR=''
-EXEC_DIR=''
+Dest_dir=''
+Exec_dir='/usr/bin/'
 
     if [ "$UID" -eq "$ROOT_UID" ]; then
 
-        DEST_DIR="/usr/share/kio/servicemenus"
-        EXEC_DIR="/usr/bin/"
+        Dest_dir="/usr/share/kio/servicemenus"
+        Exec_dir="/usr/bin/"
         
-        rm "$EXEC_DIR/$foldercolorSH" "$DEST_DIR/$foldercolorDE" "$DEST_DIR/$foldercolorSY"
+        rm "$Exec_dir/$foldercolorSH" "$Dest_dir/$foldercolorDE" "$Dest_dir/$foldercolorSY"
 
         echo 'UNINSTALLED OK'
     
     else
-        DEST_DIR="$HOME/.local/share/kio/servicemenus"
+        Dest_dir="$HOME/.local/share/kio/servicemenus"
         
-        rm "$DEST_DIR/$foldercolorSH" "$DEST_DIR/$foldercolorDE" "$DEST_DIR/$foldercolorSY"
+        sudo rm "$Exec_dir/$foldercolorSH"
+
+        rm "$Dest_dir/$foldercolorDE" "$Dest_dir/$foldercolorSY"
 
         echo 'UNINSTALLED OK'
 

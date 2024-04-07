@@ -4,42 +4,42 @@ foldercolorDE='plasma-folder-color.desktop'
 foldercolorSY='plasma-color-symbolic.desktop'
 foldercolorSH='dolphin-folder-color'
 ROOT_UID=0 
-DEST_DIR=''
-EXEC_DIR=''
+Dest_dir=''
+Exec_dir='/usr/bin/'
 
-    if [ "$UID" -eq "$ROOT_UID" ]; then
+   if [ "$UID" -eq "$ROOT_UID" ]; then
 
-        DEST_DIR="/usr/share/kio/servicemenus"
-        EXEC_DIR="/usr/bin/"
+       Dest_dir="/usr/share/kio/servicemenus"
+               
+       rm "$Exec_dir/$foldercolorSH" "$Dest_dir/$foldercolorDE" "$Dest_dir/$foldercolorSY"
         
-        rm "$EXEC_DIR/$foldercolorSH" "$DEST_DIR/$foldercolorDE" "$DEST_DIR/$foldercolorSY"
+       mkdir -p    ${Dest_dir}
         
-        mkdir -p    ${DEST_DIR}
+       cp -f ./$foldercolorSH                      "$Exec_dir/$foldercolorSH"
+       cp -f ./$foldercolorSY                      "$Dest_dir/$foldercolorSY"
+       cp -f ./$foldercolorDE                      "$Dest_dir/$foldercolorDE"
         
-        cp -f ./$foldercolorSH                      "$EXEC_DIR/$foldercolorSH"
-        cp -f ./$foldercolorSY                      "$DEST_DIR/$foldercolorSY"
-        cp -f ./$foldercolorDE                      "$DEST_DIR/$foldercolorDE"
-        
-        chmod +x "$EXEC_DIR/$foldercolorSH"
-        chmod +x "$DEST_DIR/$foldercolorSY"
-        chmod +x "$DEST_DIR/$foldercolorDE"
+       chmod +x "$Exec_dir/$foldercolorSH"
+       chmod +x "$Dest_dir/$foldercolorSY"
+       chmod +x "$Dest_dir/$foldercolorDE"
 
-        echo 'INSTALLED IN $ROOT DIRECTORY'
+       echo 'INSTALLED IN $ROOT DIRECTORY'
     
-    else
-        DEST_DIR="$HOME/.local/share/kio/servicemenus"
+   else
+       Dest_dir="$HOME/.local/share/kio/servicemenus"
         
-        rm "$DEST_DIR/$foldercolorSH" "$DEST_DIR/$foldercolorDE" "$DEST_DIR/$foldercolorSY"
+       rm "$Dest_dir/$foldercolorSH" "$Dest_dir/$foldercolorDE" "$Dest_dir/$foldercolorSY"
         
-        mkdir -p    ${DEST_DIR}
+       mkdir -p    ${Dest_dir}
         
-        cp -f ./$foldercolorSH                      "$DEST_DIR/$foldercolorSH"
-        cp -f ./$foldercolorSY                      "$DEST_DIR/$foldercolorSY"
-        cp -f ./$foldercolorDE                      "$DEST_DIR/$foldercolorDE"
+       sudo cp -f "./$foldercolorSH"               "$Exec_dir/$foldercolorSH"
+       sudo chmod +x "$Exec_dir/$foldercolorSH"
+
+       cp -f ./$foldercolorSY                      "$Dest_dir/$foldercolorSY"
+       cp -f ./$foldercolorDE                      "$Dest_dir/$foldercolorDE"
+
+       chmod +x "$Dest_dir/$foldercolorSY"
+       chmod +x "$Dest_dir/$foldercolorDE"
         
-        chmod +x "$DEST_DIR/$foldercolorSH"
-        chmod +x "$DEST_DIR/$foldercolorSY"
-        chmod +x "$DEST_DIR/$foldercolorDE"
-        
-        echo 'INSTALLED IN $USER DIRECTORY'
+       echo 'INSTALLED IN $USER DIRECTORY'
    fi
