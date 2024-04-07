@@ -5,7 +5,7 @@ version 3.0.0-Mefsaal
 A KDE Service Menu for coloring the folders so fast, also has the ability to color a selected set of folders.
 
 ## Installation
-You just need to run the script. **install.sh** with a click and restart dolphin.
+You just need to run the script. **install.sh** in konsole and restart dolphin.
 
 ## Screenshots
 ### Service Menu
