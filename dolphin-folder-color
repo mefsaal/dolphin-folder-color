@@ -152,17 +152,16 @@ configureIcon() {
     local icon='folder'
     
     case $color in
-        default) ;;
+        default) icon="" ;;
         none)    icon="$icon"$(getCurrentColor $1) ;;
         *)       icon="$icon-$color"
     esac
-    
+
     case $symbol in
-        default) ;;
+        default) icon="" ;;
         none)    icon="$icon"$(getCurrentSymbol $1) ;;
         *)       icon="$icon-$symbol"
     esac
-    
     echo $icon
 }
 
