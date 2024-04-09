@@ -20,5 +20,5 @@ You just need to run the script. **install.sh** in konsole and restart dolphin.
 ### Custom Icon Color
  ![Custom Icon](colors.png)
                                     
-### Custom Icon Color
+### Custom Icon Symbolic
  ![Custom Icon](symbolic.png)
