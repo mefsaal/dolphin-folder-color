@@ -74,15 +74,15 @@ Icon=folder-downloads
 Exec=dolphin-folder-color -s downloads %U
 
 [Desktop Action music]
-Name=Sound
-Name[es]=Sonido
-Name[fr]=Son
-Name[it]=Suono
-Name[pt]=Parecer
-Name[pt_BR]=Áudio
-Name[de]=Klingen
-Name[pl]=Muzyka
-Name[ru]=Музыка
+Name=Music
+Name[es]=Musica
+Name[fr]=Music
+Name[it]=Music
+Name[pt]=Music
+Name[pt_BR]=Music
+Name[de]=Music
+Name[pl]=Music
+Name[ru]=Music
 Icon=folder-music
 Exec=dolphin-folder-color -s music %U   
 
