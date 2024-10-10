@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (C) 2014  Smith AR <audoban@openmailbox.org>
+# Copyright (C) 2014  Smith AR and mefsaal <audoban@openmailbox.org>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 #
-# Version 2.0
+# Version 3.0
 
 shopt -s extglob
 shopt -s expand_aliases

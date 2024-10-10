@@ -1,11 +1,9 @@
 [Desktop Entry]
-Name=Symbolic Color
-
-Encoding=UTF-8
-Version=2.0
-Icon=folder-desktop
 Type=Service
 MimeType=inode/directory;
+Actions=default;_SEPARATOR_;home;desktop;documents;downloads;music;pictures;public;templates;videos;_SEPARATOR_;custom-icon;
+
+Icon=desktop
 
 X-KDE-Submenu=Symbolic Color
 X-KDE-Submenu[es]=Color de Simbolos 
@@ -16,8 +14,6 @@ X-KDE-Submenu[pt_BR]=Symbolic Color
 X-KDE-Submenu[de]=Symbolic Color
 X-KDE-Submenu[pl]=Symbolic Color
 X-KDE-Submenu[ru]=Symbolic Color
-
-Actions=home;desktop;documents;downloads;music;pictures;public;templates;videos;default;
 
 #########################################################################################################
 

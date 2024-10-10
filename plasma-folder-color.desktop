@@ -1,11 +1,9 @@
 [Desktop Entry]
-Name=Folder Color
-
-Encoding=UTF-8
-Version=2.0
-Icon=folder-folder
 Type=Service
 MimeType=inode/directory;
+Actions=default;_SEPARATOR_;blue;black;brown;cyan;green;grey;magenta;orange;pink;purple;red;violet;white;yellow;_SEPARATOR_;custom-icon;_SEPARATOR_;random-icon
+
+Icon=folder
 
 X-KDE-Submenu=Folder Color
 X-KDE-Submenu[es]=Color Carpeta
@@ -16,8 +14,6 @@ X-KDE-Submenu[pt_BR]=Cor da pasta
 X-KDE-Submenu[de]=Farbe Ordner
 X-KDE-Submenu[pl]=Kolor katalogu
 X-KDE-Submenu[ru]=Цвет папки
-
-Actions=custom-icon;random-icon;default;blue;black;brown;cyan;green;grey;magenta;orange;pink;purple;red;violet;white;yellow;
 
 #########################################################################################################
 
